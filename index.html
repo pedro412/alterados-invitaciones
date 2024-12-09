@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      html {
+        height: 100%;
+      }
+      body {
+        height: 100%;
+        background-image: url(fondo.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      .logo {
+        text-align: center;
+        max-width: 360px;
+        margin: auto;
+        padding-top: 50px;
+      }
+
+      .logo img {
+        width: 100%;
+      }
+
+      .text-center {
+        text-align: center;
+      }
+
+      .white {
+        color: white;
+      }
+
+      #name {
+        color: #ed3337;
+        font-size: 32px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="logo">
+      <img src="logo.png" alt="alterados mc" />
+    </div>
+    <div class="text-center white">
+      <h2>Pase para:</h2>
+      <div id="name"></div>
+    </div>
+
+    <script>
+      // Function to get URL parameter by name
+      function getUrlParameter(paramName) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(paramName);
+      }
+
+      // Example usage
+      const name = getUrlParameter("name");
+      if (name) {
+        console.log("Name:", name);
+        document.getElementById("name").innerText = name;
+      } else {
+        console.log('The "name" parameter is not present in the URL.');
+      }
+    </script>
+  </body>
+</html>

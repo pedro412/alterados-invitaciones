@@ -41,6 +41,8 @@
         color: #ed3337;
         font-size: 32px;
         margin-top: 20px;
+        font-weight: 600;
+        font-family: fantasy;
       }
 
       .code {
@@ -50,6 +52,10 @@
         justify-content: center;
         margin-top: 20px;
       }
+
+      #for {
+        font-size: 20px;
+      }
     </style>
   </head>
   <body>
@@ -57,10 +63,10 @@
       <img src="logo-1.png" alt="alterados mc" />
     </div>
     <div class="text-center white">
-      <h2 id="for"></h2>
+      <p id="for"></p>
       <div class="names">
         <div id="name"></div>
-        &
+        <div id="ampersand"></div>
         <div id="companion"></div>
       </div>
       <div class="code">
@@ -83,9 +89,9 @@
         if (type === "2") {
           document.getElementById("for").innerText =
             "Pase valido para 2 personas";
-        } else {
-          document.getElementById("for").innerText = "Pase individual";
         }
+      } else {
+        document.getElementById("for").innerText = "Pase individual";
       }
       if (name) {
         document.getElementById("name").innerText = name;
@@ -101,6 +107,7 @@
       }
 
       if (companion) {
+        document.getElementById("ampersand").innerText = "&";
         document.getElementById("companion").innerText = companion;
       }
     </script>

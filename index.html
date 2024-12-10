@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Alterados Fest</title>
+    <script src="/qrcode.js"></script>
     <style>
       html {
         height: 100%;
@@ -19,7 +20,7 @@
 
       .logo {
         text-align: center;
-        max-width: 360px;
+        max-width: 300px;
         margin: auto;
         padding-top: 50px;
       }
@@ -36,9 +37,18 @@
         color: white;
       }
 
-      #name {
+      .names {
         color: #ed3337;
         font-size: 32px;
+        margin-top: 20px;
+      }
+
+      .code {
+        text-align: center;
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
       }
     </style>
   </head>
@@ -47,8 +57,15 @@
       <img src="logo-1.png" alt="alterados mc" />
     </div>
     <div class="text-center white">
-      <h2>Pase para:</h2>
-      <div id="name"></div>
+      <h2 id="for"></h2>
+      <div class="names">
+        <div id="name"></div>
+        &
+        <div id="companion"></div>
+      </div>
+      <div class="code">
+        <div id="qrcode"></div>
+      </div>
     </div>
 
     <script>
@@ -59,12 +76,32 @@
       }
 
       // Example usage
-      const name = getUrlParameter("name");
+      const name = getUrlParameter("guest");
+      const type = getUrlParameter("type");
+      const companion = getUrlParameter("companion");
+      if (type) {
+        if (type === "2") {
+          document.getElementById("for").innerText =
+            "Pase valido para 2 personas";
+        } else {
+          document.getElementById("for").innerText = "Pase individual";
+        }
+      }
       if (name) {
-        console.log("Name:", name);
         document.getElementById("name").innerText = name;
-      } else {
-        console.log('The "name" parameter is not present in the URL.');
+
+        const qrContainer = document.getElementById("qrcode");
+
+        const qrcode = new QRCode(qrContainer, {
+          text: window.location.href,
+          with: 256,
+          height: 256,
+          colorDark: "#000000",
+        });
+      }
+
+      if (companion) {
+        document.getElementById("companion").innerText = companion;
       }
     </script>
   </body>
